@@ -26,6 +26,9 @@ export default class PortaModel{
     get aberta(){
         return this.#aberta
     }
+    get fechada(){
+        return !this.aberta
+    }
 
 
     //Metodo para alternar a selecao da porta
@@ -37,7 +40,8 @@ export default class PortaModel{
     //Metodo para desselecionar a porta
     desselecionar(){
         const selecionada = false //Se a selecao incialmente for false, passará a ser true e vice versa
-        return new PortaModel (this.numero, this.temPresente, this.selecionada, this.aberta) //Retorna uma nova instancia(objeto) sem alterar os valores iniciais 
+        return new PortaModel (this.numero, this.temPresente, selecionada, this.aberta) //Retorna uma nova instancia(objeto) sem alterar os valores iniciais 
+        
     }
 
     //Metodo para abrir a porta

@@ -5,13 +5,14 @@ import PortaModel from "../model/porta";
 
 export default function Home() {
  
-  const [portas, setPortas] = useState(criarPortas(3, 2))
+  const [portas, setPortas] = useState(criarPortas(6, 4))
  
 
   function renderizarPortas(){
     return portas.map(porta=>{
       return <Porta key={porta.numero} value={porta} 
-      onChange={ novaPorta=> setPortas(atualizarPortas(portas, novaPorta))}/>
+      onChange={novaPorta => { console.log(novaPorta)
+        setPortas(atualizarPortas(portas, novaPorta))}}/>
     })
   }
 
