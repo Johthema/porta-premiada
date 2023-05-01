@@ -5,7 +5,7 @@ import PortaModel from "../model/porta";
 
 export default function Home() {
  
-  const [portas, setPortas] = useState(criarPortas(6, 4))
+  const [portas, setPortas] = useState(criarPortas(4, 3))
  
 
   function renderizarPortas(){
