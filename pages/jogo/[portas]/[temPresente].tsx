@@ -9,6 +9,17 @@ export default function Jogo(){
   const router = useRouter()
   const [portas, setPortas] = useState([])
   
+  const [valido, setValido] = useState(false)
+
+  useEffect(()=>{
+    const portas = +router.query.portas
+    const temPresente = +router.query.temPresente
+
+    const qtdePortasValida = portas >= 3&& portas <= 100
+    const temPresenteValido = temPresente >= 1 && temPresente <= portas
+    setValido(qtdePortasValida && temPresenteValido)
+  }, [portas])
+
   useEffect(()=>{
     const portas = +router.query.portas
     const temPresente = +router.query.temPresente
@@ -31,7 +42,11 @@ export default function Jogo(){
     return(
         <div id={styles.jogo}>
             <div className={styles.portas}>
-                {renderizarPortas()}
+
+                { valido ? 
+                renderizarPortas():
+                <h1>Valores invalidos</h1>
+              }
             </div>
 
             <div className={styles.botoes}>
